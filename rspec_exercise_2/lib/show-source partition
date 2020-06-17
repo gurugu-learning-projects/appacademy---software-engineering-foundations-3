@@ -1,0 +1,62 @@
+[32mdef[0m [1;34mpartition[0m(arr, num)
+  first = []
+  second = []
+  final = []
+
+  arr.each [32mdo[0m |ele|
+    [32mif[0m ele < num
+      first << ele
+    [32melse[0m
+      second << ele
+    [32mend[0m
+  [32mend[0m
+
+  final << first << second
+  final
+[32mend[0m
+
+[32mdef[0m [1;34mmerge[0m(hash_1, hash_2)
+  new_hash = {}
+
+  hash_1.each {|key, value| new_hash[key] = value}
+  hash_2.each {|key, value| new_hash[key] = value}
+
+  new_hash
+[32mend[0m
+
+[32mdef[0m [1;34mcensor[0m(sentence, curse_words)
+  vowels = [31m[1;31m"[0m[31maeiou[1;31m"[0m[31m[0m
+  sentence_arr = sentence.split([31m[1;31m"[0m[31m [1;31m"[0m[31m[0m)
+
+  sentence_arr.map! [32mdo[0m |word|
+    [32mif[0m curse_words.include?(word.downcase)
+      new_word = [31m[1;31m"[0m[31m[1;31m"[0m[31m[0m
+
+      word.each_char [32mdo[0m |char|
+        [32mif[0m vowels.include?(char.downcase)
+          new_word += [31m[1;31m"[0m[31m*[1;31m"[0m[31m[0m
+        [32melse[0m
+          new_word += char
+        [32mend[0m
+      [32mend[0m
+
+      new_word
+    [32melse[0m
+      word
+    [32mend[0m
+  [32mend[0m
+
+  sentence_arr.join([31m[1;31m"[0m[31m [1;31m"[0m[31m[0m)
+[32mend[0m
+
+[32mdef[0m [1;34mpower_of_two?[0m(num)
+  ([1;34m0[0m..num).each [32mdo[0m |count|
+    [32mif[0m [1;34m2[0m ** count == num
+      [32mreturn[0m [1;36mtrue[0m
+    [32mend[0m
+  [32mend[0m
+  
+  [1;36mfalse[0m
+[32mend[0m
+
+puts power_of_two?([1;34m1[0m)
