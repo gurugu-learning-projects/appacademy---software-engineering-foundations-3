@@ -133,10 +133,14 @@ class List
   end
 
   def purge
-    @items.each_with_index do |item, idx|
-      if item.done
-        self.remove_item(idx)
+    item_in_progress = []
+
+    @items.each do |item|
+      if !item.done
+        item_in_progress << item
       end
     end
+
+    @items = item_in_progress
   end
 end
