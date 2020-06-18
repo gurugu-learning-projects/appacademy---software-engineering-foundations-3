@@ -1,8 +1,8 @@
 require "./list.rb"
 
 class TodoBoard
-  def initialize(label)
-    @list = List.new(label)
+  def initialize()
+    @lists = Hash.new()
   end
 
   def get_command
