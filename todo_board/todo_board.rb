@@ -28,7 +28,13 @@ class TodoBoard
       return true
     when "mktodo"
       list, *item_props = args;
-      @lists[list].add_item(*item_props)
+
+      if @lists.has_key?(list)
+        @lists[list].add_item(*item_props)
+      else
+        print "There is no such list, please try again"
+      end
+      
       return true
     when "up"
       args.map!(&:to_i)
