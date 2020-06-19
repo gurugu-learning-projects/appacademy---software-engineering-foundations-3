@@ -27,7 +27,8 @@ class TodoBoard
       @lists.each_value {|list| list.print}
       return true
     when "mktodo"
-      @list.add_item(*args)
+      list, *item_props = args;
+      @lists[list].add_item(*item_props)
       return true
     when "up"
       args.map!(&:to_i)
