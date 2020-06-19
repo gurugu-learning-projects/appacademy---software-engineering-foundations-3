@@ -23,6 +23,9 @@ class TodoBoard
       end
       puts divider
       return true
+    when "showall"
+      @lists.each_value {|list| list.print}
+      return true
     when "mktodo"
       @list.add_item(*args)
       return true
