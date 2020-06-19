@@ -13,6 +13,16 @@ class TodoBoard
     when "mklist"
       list_name = args[0]
       @lists[list_name] = List.new(list_name)
+    when "ls"
+      divider = "------------------------------------------"
+      puts divider
+      puts "LISTS".center(divider.length)
+      puts divider
+      @lists.each do |label, list|
+        puts label
+      end
+      puts divider
+      return true
     when "mktodo"
       @list.add_item(*args)
       return true
