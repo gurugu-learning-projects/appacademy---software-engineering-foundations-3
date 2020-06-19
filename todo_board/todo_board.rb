@@ -10,6 +10,9 @@ class TodoBoard
     cmd, *args = gets.chomp.split(" ")
 
     case cmd
+    when "mklist"
+      list_name = args[0]
+      @lists[list_name] = List.new(list_name)
     when "mktodo"
       @list.add_item(*args)
       return true
