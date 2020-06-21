@@ -119,7 +119,7 @@ class List
     if self.valid_index?(index)
       self[index].toggle
     else
-      puts "Enter valid index"
+      puts "There is no such index"
     end
   end
 
