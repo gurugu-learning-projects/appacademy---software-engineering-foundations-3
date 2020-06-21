@@ -66,15 +66,20 @@ class TodoBoard
       if @lists.has_key?(args[0])
         arg_to_i = args[1].to_i - 1
         @lists[args[0]].toggle_item(arg_to_i)
-        print "Toggled"
       else
         print "There is no such list, please try again"
       end
 
       return true
     when "rm"
-      arg_to_i = args[0].to_i - 1
-      @list.remove_item(arg_to_i)
+      if @lists.has_key?(args[0])
+        arg_to_i = args[1].to_i - 1
+        @lists[args[0]].remove_item(arg_to_i)
+        print "Toggled"
+      else
+        print "There is no such list, please try again"
+      end
+
       return true
     when "purge"
       @list.purge

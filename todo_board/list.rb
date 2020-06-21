@@ -118,6 +118,7 @@ class List
   def toggle_item(index)
     if self.valid_index?(index)
       self[index].toggle
+      print "Toggled"
     else
       puts "There is no such index"
     end
