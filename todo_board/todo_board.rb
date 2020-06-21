@@ -27,8 +27,8 @@ class TodoBoard
       @lists.each_value {|list| list.print}
       return true
     when "mktodo"
-      if args.length < 2
-        print "Please provide 2 arguments: <list_label> <item_index>"
+      if args.length < 3
+        print "Please provide the following arguments: <list_label> <item_title> <item_deadline> <optional_item_description>"
         return true
       end
 
@@ -90,7 +90,6 @@ class TodoBoard
       if @lists.has_key?(args[0])
         arg_to_i = args[1].to_i - 1
         @lists[args[0]].remove_item(arg_to_i)
-        print "Toggled"
       else
         print "There is no such list, please try again"
       end

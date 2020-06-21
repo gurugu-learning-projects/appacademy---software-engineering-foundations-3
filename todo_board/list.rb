@@ -126,6 +126,7 @@ class List
 
   def remove_item(index)
     if !self.valid_index?(index)
+      puts "There is no such index"
       false
     else
       @items.slice!(index)
