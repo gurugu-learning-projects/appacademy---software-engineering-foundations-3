@@ -27,6 +27,11 @@ class TodoBoard
       @lists.each_value {|list| list.print}
       return true
     when "mktodo"
+      if args.length < 2
+        print "Please provide 2 arguments: <list_label> <item_index>"
+        return true
+      end
+
       list, *item_props = args;
 
       if @lists.has_key?(list)
@@ -63,6 +68,11 @@ class TodoBoard
       end
       return true
     when "toggle"
+      if args.length < 2
+        print "Please provide 2 arguments: <list_label> <item_index>"
+        return true
+      end
+
       if @lists.has_key?(args[0])
         arg_to_i = args[1].to_i - 1
         @lists[args[0]].toggle_item(arg_to_i)
@@ -72,6 +82,11 @@ class TodoBoard
 
       return true
     when "rm"
+      if args.length < 2
+        print "Please provide 2 arguments: <list_label> <item_index>"
+        return true
+      end
+
       if @lists.has_key?(args[0])
         arg_to_i = args[1].to_i - 1
         @lists[args[0]].remove_item(arg_to_i)
