@@ -101,7 +101,13 @@ class TodoBoard
 
       return true
     when "purge"
-      @list.purge
+      if args.length < 1
+        print "Please write command as: purge <list_label>"
+        return true
+      end
+
+      @lists[args[0]].purge
+      print "Purged"
       return true
     when "quit"
       return false

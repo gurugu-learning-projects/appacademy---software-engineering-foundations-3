@@ -118,7 +118,7 @@ class List
   def toggle_item(index)
     if self.valid_index?(index)
       self[index].toggle
-      print "Toggled"
+      puts "Toggled"
     else
       puts "There is no such index"
     end
@@ -135,14 +135,14 @@ class List
   end
 
   def purge
-    item_in_progress = []
+    items_in_progress = []
 
     @items.each do |item|
       if !item.done
-        item_in_progress << item
+        items_in_progress << item
       end
     end
 
-    @items = item_in_progress
+    @items = items_in_progress
   end
 end
