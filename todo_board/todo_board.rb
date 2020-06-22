@@ -11,6 +11,11 @@ class TodoBoard
 
     case cmd
     when "mklist"
+      if args.length < 1
+        print "Please write command as: mklist <new_list_label>"
+        return true
+      end
+
       list_name = args[0]
       @lists[list_name] = List.new(list_name)
     when "ls"
@@ -28,7 +33,7 @@ class TodoBoard
       return true
     when "mktodo"
       if args.length < 3
-        print "Please provide the following arguments: <list_label> <item_title> <item_deadline> <optional_item_description>"
+        print "Please write command as: mktodo <list_label> <item_title> <item_deadline> <optional_item_description>"
         return true
       end
 
@@ -69,7 +74,7 @@ class TodoBoard
       return true
     when "toggle"
       if args.length < 2
-        print "Please provide 2 arguments: <list_label> <item_index>"
+        print "Please write command as: toggle <list_label> <item_index>"
         return true
       end
 
@@ -83,7 +88,7 @@ class TodoBoard
       return true
     when "rm"
       if args.length < 2
-        print "Please provide 2 arguments: <list_label> <item_index>"
+        print "Please write command as: rm <list_label> <item_index>"
         return true
       end
 
