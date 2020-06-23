@@ -37,7 +37,7 @@ class TodoBoard
         return true
       end
 
-      list, *item_props = args;
+      list, *item_props = args
 
       if @lists.has_key?(list)
         @lists[list].add_item(*item_props)
@@ -47,8 +47,20 @@ class TodoBoard
       
       return true
     when "up"
-      args.map!(&:to_i)
-      @list.up(*args)
+      if args.length < 2
+        print "Please write command as: up <list_label> <item_index> <optional_amount>"
+        return true
+      end
+
+      list, *up_props = args
+
+      if @lists.has_key?(list)
+        up_props.map!(&:to_i)
+        @lists[list].up(*up_props)
+      else
+        print "There is no such list, please try again"
+      end
+
       return true
     when "down"
       args.map!(&:to_i)

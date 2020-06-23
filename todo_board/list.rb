@@ -90,10 +90,12 @@ class List
   end
 
   def up(index, amount = 1)
-    if self.valid_index?(index)
-      if index > 0 && amount > 0
-        self.swap(index, index - 1)
-        self.up(index - 1, amount - 1)
+    proper_index = index - 1
+    
+    if self.valid_index?(proper_index)
+      if proper_index > 0 && amount > 0
+        self.swap(proper_index, proper_index - 1)
+        self.up(proper_index - 1, amount - 1)
       end
     else
       false
