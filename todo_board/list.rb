@@ -103,10 +103,12 @@ class List
   end
 
   def down(index, amount = 1)
-    if self.valid_index?(index)
-      if index < self.size - 2 && amount > 0
-        self.swap(index, index + 1)
-        self.down(index + 1, amount - 1)
+    proper_index = index - 1
+
+    if self.valid_index?(proper_index)
+      if proper_index < self.size - 2 && amount > 0
+        self.swap(proper_index, proper_index + 1)
+        self.down(proper_index + 1, amount - 1)
       end
     else
       false

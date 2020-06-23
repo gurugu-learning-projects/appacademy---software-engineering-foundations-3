@@ -63,8 +63,20 @@ class TodoBoard
 
       return true
     when "down"
-      args.map!(&:to_i)
-      @list.down(*args)
+      if args.length < 2
+        print "Please write command as: down <list_label> <item_index> <optional_amount>"
+        return true
+      end
+
+      list, *down_props = args
+
+      if @lists.has_key?(list)
+        down_props.map!(&:to_i)
+        @lists[list].down(*down_props)
+      else
+        print "There is no such list, please try again"
+      end
+
       return true
     when "swap"
       args.map!(&:to_i)
