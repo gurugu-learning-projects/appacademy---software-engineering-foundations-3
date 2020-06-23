@@ -57,7 +57,7 @@ class List
     puts divider
 
     @items.each_with_index do |item, idx|
-      puts "#{idx + 1}     | #{item.title.ljust(item_title.length)}| #{item.deadline} | #{item.done ? "done" : "in progress"}"
+      puts "#{idx}     | #{item.title.ljust(item_title.length)}| #{item.deadline} | #{item.done ? "done" : "in progress"}"
     end
 
     puts divider
@@ -90,12 +90,10 @@ class List
   end
 
   def up(index, amount = 1)
-    proper_index = index - 1
-    
-    if self.valid_index?(proper_index)
-      if proper_index > 0 && amount > 0
-        self.swap(proper_index, proper_index - 1)
-        self.up(proper_index - 1, amount - 1)
+    if self.valid_index?(index)
+      if index > 0 && amount > 0
+        self.swap(index, index - 1)
+        self.up(index - 1, amount - 1)
       end
     else
       false
@@ -103,12 +101,10 @@ class List
   end
 
   def down(index, amount = 1)
-    proper_index = index - 1
-
-    if self.valid_index?(proper_index)
-      if proper_index < self.size - 2 && amount > 0
-        self.swap(proper_index, proper_index + 1)
-        self.down(proper_index + 1, amount - 1)
+    if self.valid_index?(index)
+      if index < self.size - 1 && amount > 0
+        self.swap(index, index + 1)
+        self.down(index + 1, amount - 1)
       end
     else
       false

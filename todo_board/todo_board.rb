@@ -90,7 +90,7 @@ class TodoBoard
       return true
     when "print"
       if args.length > 0
-        arg_to_i = args[0].to_i - 1
+        arg_to_i = args[0].to_i
         @list.print_full_item(arg_to_i)
       else
         @list.print
@@ -103,7 +103,7 @@ class TodoBoard
       end
 
       if @lists.has_key?(args[0])
-        arg_to_i = args[1].to_i - 1
+        arg_to_i = args[1].to_i
         @lists[args[0]].toggle_item(arg_to_i)
       else
         print "There is no such list, please try again"
@@ -117,7 +117,7 @@ class TodoBoard
       end
 
       if @lists.has_key?(args[0])
-        arg_to_i = args[1].to_i - 1
+        arg_to_i = args[1].to_i
         @lists[args[0]].remove_item(arg_to_i)
       else
         print "There is no such list, please try again"
