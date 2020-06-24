@@ -79,8 +79,20 @@ class TodoBoard
 
       return true
     when "swap"
-      args.map!(&:to_i)
-      @list.swap(*args)
+      if args.length < 3
+        print "Please write command as: swap <list_label> <item_index_1> <item_index_2>"
+        return true
+      end
+
+      list, *swap_props = args
+
+      if @lists.has_key?(list)
+        swap_props.map!(&:to_i)
+        @lists[list].swap(*swap_props)
+      else
+        print "There is no such list, please try again"
+      end
+
       return true
     when "sort"
       @list.sort_by_date!
