@@ -125,12 +125,24 @@ class TodoBoard
 
       return true
     when "print"
-      if args.length > 0
-        arg_to_i = args[0].to_i
-        @list.print_full_item(arg_to_i)
-      else
-        @list.print
+      if args.length < 1
+        print "Please write command as: print <list_label> <optional_index>"
+        return true
       end
+
+      list = args[0]
+
+      if @lists.has_key?(list)
+        if args.length > 1
+          arg_to_i = args[1].to_i
+          @lists[list].print_full_item(arg_to_i)
+        else
+          @lists[list].print
+        end
+      else
+        print "There is no such list, please try again"
+      end
+
       return true
     when "toggle"
       if args.length < 2
