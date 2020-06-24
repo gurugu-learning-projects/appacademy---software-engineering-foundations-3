@@ -110,7 +110,19 @@ class TodoBoard
 
       return true
     when "priority"
-      @list.print_priority
+      if args.length < 1
+        print "Please write command as: priority <list_label>"
+        return true
+      end
+
+      list = args[0]
+
+      if @lists.has_key?(list)
+        @lists[list].print_priority
+      else
+        print "There is no such list, please try again"
+      end
+
       return true
     when "print"
       if args.length > 0
