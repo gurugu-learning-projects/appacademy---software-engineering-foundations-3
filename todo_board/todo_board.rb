@@ -95,7 +95,19 @@ class TodoBoard
 
       return true
     when "sort"
-      @list.sort_by_date!
+      if args.length < 1
+        print "Please write command as: sort <list_label>"
+        return true
+      end
+
+      list = args[0]
+
+      if @lists.has_key?(list)
+        @lists[list].sort_by_date!
+      else
+        print "There is no such list, please try again"
+      end
+
       return true
     when "priority"
       @list.print_priority
