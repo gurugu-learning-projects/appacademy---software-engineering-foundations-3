@@ -1,7 +1,7 @@
 require "./list.rb"
 
 class TodoBoard
-  def initialize()
+  def initialize
     @lists = Hash.new()
   end
 
