@@ -15,7 +15,10 @@ class Item
   end
 
   def self.valid_date?(date_string)
-    year, month, day = date_string.split("-").map(&:to_i)
+    parts = date_string.split("-")
+    year, month, day = parts.map(&:to_i)
+
+    return false if parts.length != 3
 
     year > 0 && month >= 1 && month <= 12 && day >= 1 && day <= 31
   end
