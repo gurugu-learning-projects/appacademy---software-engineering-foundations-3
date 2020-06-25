@@ -3,12 +3,9 @@ class Item
   attr_reader :deadline, :done
 
   def initialize(title, deadline, description)
+    raise "Invalid date" if !Item.valid_date?(deadline)
+    
     @title = title
-
-    if !Item.valid_date?(deadline)
-      raise "Invalid date"
-    end
-
     @deadline = deadline
     @description = description
     @done = false
