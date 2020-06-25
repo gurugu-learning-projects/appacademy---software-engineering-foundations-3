@@ -21,11 +21,9 @@ class Item
   end
 
   def deadline=(new_deadline)
-    if !Item.valid_date?(new_deadline)
-      raise "Invalid date"
-    else
-      @deadline = new_deadline
-    end
+    raise "Invalid date" if !Item.valid_date?(new_deadline)
+      
+    @deadline = new_deadline
   end
 
   def toggle
